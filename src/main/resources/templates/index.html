@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    th, td{
+      border:1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <h2>顯示列表</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>學號</th>
+      <th>姓名</th>
+      <th>數學</th>
+      <th>英文</th>
+      <th>性別</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="studentVO: ${list}">
+      <td th:text="${studentVO.no}"></td>
+      <td th:text="${studentVO.name}"></td>
+      <td th:text="${studentVO.math}"></td>
+      <td th:text="${studentVO.eng}"></td>
+      <td th:switch="${studentVO.gender}">
+        <p th:case="1">男</p>
+        <p th:case="2">女</p>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+<h2>單比查詢</h2>
+<form action="/getone" method="post">
+  學號：<input type="number" name="no" required />
+  <div th:if="${student != null}">
+    <p th:text="'學號：' + ${student.no}"></p>
+    <p th:text="'姓名：' + ${student.name}"></p>
+    <p th:text="'數學：' + ${student.math}"></p>
+    <p th:text="'英文：' + ${student.eng}"></p>
+    <p th:text="'性別：' + (${student.gender} == 1 ? '男' : '女')"></p>
+  </div>
+  <p th:if="${msg}" th:text="${msg}" style="color:red"></p>
+  <button type="submit">查詢</button>
+</form>
+</body>
+
+<h2>新增</h2>
+<form method="post" action="/addone">
+    姓名：<input type="text" name="name" required />
+    數學：<input type="number" name="math" required />
+    英文：<input type="number" name="eng" required />
+    性別：<input type="number" name="gender" required>
+  <p th:if="${columnmsg}" th:text="${columnmsg}" style="color: red"></p>
+  <p th:if="${error}" th:text="${error}" style="color: red"></p>
+  <button type="submit">送出</button>
+</form>
+
+<h2>刪除</h2>
+<form method="post" action="/deleteone">
+  請輸入要刪除的學號：<input type="number" name="no" required />
+  <p th:if="${nomsg}" th:text="${nomsg}" style="color: red"></p>
+  <p th:if="${noOne}" th:text="${noOne}" style="color: red"></p>
+
+  <button type="submit">送出</button>
+</form>
+
+
+<h2>修改成績</h2>
+<form method="post" action="/updateScores">
+  請輸入要修改的學號：<input type="number" name="no" required />
+  <p th:if="${noOne}" th:text="${noOne}" style="color: red"></p>
+  英文：<input type="number" name="eng" required />
+    <p th:if="${error}" th:text="${error}" style="color: red"></p>
+  數學：<input type="number" name="math" required />
+    <p th:if="${error}" th:text="${error}" style="color: red"></p>
+  <button type="submit">送出</button>
+</form>
+</html>
