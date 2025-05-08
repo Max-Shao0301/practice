@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        th, td{
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<h2>user list</h2>
+<table>
+    <thead>
+    <tr>
+        <th>用戶編號</th>
+        <th>用戶帳號</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="userVO : ${users}">
+        <td th:text="${userVO.userId}"></td>
+        <td th:text="${userVO.getAccount()}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

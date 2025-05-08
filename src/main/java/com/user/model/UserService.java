@@ -22,4 +22,9 @@ public class UserService {
             return false;
         }
     }
+
+    public List<UserVO> findAll() {
+        List<UserVO> list = userRepository.findUsers();
+        return list;
+    }
 }
