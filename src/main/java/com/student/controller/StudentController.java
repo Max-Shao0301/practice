@@ -51,12 +51,7 @@ public class StudentController {
             model.addAttribute("error", "error");
             return "index";
         }
-        StudentVO studentVO = new StudentVO();
-        studentVO.setName(name);
-        studentVO.setMath(math);
-        studentVO.setEng(eng);
-        studentVO.setGender(gender);
-        studentService.save(studentVO);
+       studentService.save(name, math, eng, gender);
         return "redirect:/index";
     }
 

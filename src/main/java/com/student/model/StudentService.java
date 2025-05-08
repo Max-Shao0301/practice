@@ -22,8 +22,14 @@ public class StudentService {
         return optional.orElse(null);
     }
 
-    public StudentVO save(StudentVO studentVO){
+    public StudentVO save(String name, Integer math, Integer eng, Integer gender){
+        StudentVO studentVO = new StudentVO();
+        studentVO.setName(name);
+        studentVO.setMath(math);
+        studentVO.setEng(eng);
+        studentVO.setGender(gender);
         return studentRepository.save(studentVO);
+
     }
 
     public void deleteById(int no){
