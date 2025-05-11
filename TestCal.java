@@ -1,4 +1,3 @@
-package interview;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -15,11 +14,11 @@ public class TestCal {
                 LocalDateTime.of(2025,5,1,18,0), "Max", 30.0));
         list.add(new Employee(2L, LocalDateTime.of(2025,5,2,9,0),
                 LocalDateTime.of(2025,5,2,18,50), "Max", 30.0));
-        list.add(new Employee(3L, LocalDateTime.of(2025,5,3,9,0),
+        list.add(new Employee(4L, LocalDateTime.of(2025,5,3,9,0),
                 LocalDateTime.of(2025,5,3,18,20), "Max", 30.0));
-        list.add(new Employee(3L, LocalDateTime.of(2025,5,3,9,0),
+        list.add(new Employee(5L, LocalDateTime.of(2025,5,3,9,0),
                 LocalDateTime.of(2025,5,3,18,00), "John", 30.0));
-        list.add(new Employee(3L, LocalDateTime.of(2025,5,4,9,0),
+        list.add(new Employee(6L, LocalDateTime.of(2025,5,4,9,0),
                 LocalDateTime.of(2025,5,4,18,00), "John", 30.0));
 
         calMonthWage(list);
